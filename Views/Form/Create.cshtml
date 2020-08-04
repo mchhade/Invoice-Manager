@@ -1,0 +1,148 @@
+﻿@model InvoiceManager.Models.Form
+<!Doctype HtML>
+<html>
+<head>
+
+</head>
+<body>
+    @using (Html.BeginForm("Create","Form",FormMethod.Post))
+    {
+    <table>
+        <tr>
+            <td>
+                <h2 style="margin-bottom:10%;">
+                    Customer information:
+                </h2>
+            </td>
+        </tr>
+        <tr>
+        <tr>
+        <td>
+            @Html.DisplayNameFor(m => m.customer.name)
+        </td>
+        <td>
+            @Html.EditorFor(m => m.customer.name)
+        </td>
+        <td>
+            @Html.ValidationMessageFor(m => m.customer.name, "", new { @class = "text-danger" })
+        </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(m => m.customer.address)
+            </td>
+            <td>
+                @Html.EditorFor(m => m.customer.address)
+            </td>
+            <td>
+                @Html.ValidationMessageFor(m => m.customer.address, "", new { @class = "text-danger" })
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(m => m.customer.phoneNumber)
+            </td>
+            <td>
+                @Html.EditorFor(m => m.customer.phoneNumber)
+            </td>
+            <td>
+                @Html.ValidationMessageFor(m => m.customer.phoneNumber, "", new { @class = "text-danger" })
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h2 style="margin-bottom:20%;margin-top:20%;">
+                    Add Element
+                </h2>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <strong>@Html.DisplayNameFor(m => m.detail.description)</strong>
+            </td>
+            <td>
+                <strong>@Html.DisplayNameFor(m => m.detail.quantity)</strong>
+            </td>
+            <td>
+                <strong>@Html.DisplayNameFor(m => m.detail.unitPrice)</strong>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.EditorFor(m => m.detail.description)
+            </td>
+            <td>
+                @Html.EditorFor(m => m.detail.quantity)
+            </td>
+            <td>
+                @Html.EditorFor(m => m.detail.unitPrice)
+            </td>
+           
+            <td>
+                <button asp-action="addToList" asp-controller="Form">Add</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <strong>@Html.ValidationMessageFor(m => m.detail.description, "", new { @class = "text-danger" })</strong>
+            </td>
+            <td>
+                <strong>@Html.ValidationMessageFor(m => m.detail.quantity, "", new { @class = "text-danger" })</strong>
+            </td>
+            <td>
+                <strong>@Html.ValidationMessageFor(m => m.detail.unitPrice, "", new { @class = "text-danger" })</strong>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h2 style="margin-top:20%;margin-bottom:15%;">
+                    Invoice Element:
+                </h2>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button asp-action="resetList" asp-controller="Form">Remove All</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <strong>@Html.DisplayNameFor(m => m.detail.description)</strong>
+            </td>
+            <td>
+                <strong>@Html.DisplayNameFor(m => m.detail.quantity)</strong>
+            </td>
+            <td>
+                <strong>@Html.DisplayNameFor(m => m.detail.unitPrice)</strong>
+            </td>
+        </tr>
+        @foreach (InvoiceDetail detail in ViewBag.details)
+        {
+
+    <tr>
+
+        <td>
+            @detail.description
+        </td>
+        <td>
+            @detail.quantity
+        </td>
+        <td>
+            @detail.unitPrice
+        </td>
+        <td>
+            @Html.ActionLink("Delete", "deleteFromList", "Form", new { id = detail.id })
+        </td>
+       
+    </tr>
+
+        }
+        <tr>
+            <td>
+                <button asp-action="saveRecord" asp-controller="Form">Create</button>
+            </td>
+        </tr>
+    </table>
+    }
+</body>
+</html>

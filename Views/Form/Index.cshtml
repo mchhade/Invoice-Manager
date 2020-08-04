@@ -1,0 +1,66 @@
+﻿@model InvoiceView
+<!Doctype Html>
+<html>
+<head>
+
+</head>
+<body>
+    <h2 style="margin-bottom:10%">
+        Invoice
+    </h2>
+    @foreach(InvoiceView view in ViewBag.views)
+    {
+        @using (Html.BeginForm())
+        {
+            <table style="width:50%; background-color:aqua; margin-bottom:5%; ">
+                 <tr>
+                    <td>
+                      @Html.DisplayNameFor(m=>m.invoiceId)
+                    </td>
+                    <td>
+                     @view.invoiceId
+                    </td>
+               </tr>
+                 <tr>
+                
+                 <tr>
+                    <td>
+
+                      @Html.DisplayNameFor(m => m.customer.name)
+                    </td>
+                    <td>
+                         @view.customer.name
+                    </td>
+               </tr>
+                 <tr>
+                    <td>
+                    @Html.DisplayNameFor(m => m.customer.address)
+                      </td>
+                     <td>
+                    @view.customer.address
+                    </td>
+               </tr>
+                 <tr >
+                     <td>
+
+                         @Html.DisplayNameFor(m => m.customer.phoneNumber)
+                     </td>
+                     <td>
+                         @view.customer.phoneNumber
+                    </td>
+                </tr>
+                 <tr>
+                     <td>
+                         @Html.ActionLink("Details", "details", "Form", new { id = view.invoiceId })
+                     </td>
+                     <td colspan="3">
+                         @Html.ActionLink("Delete", "DeleteView", "Form", new { id = view.invoiceId })
+                         @Html.ActionLink("Edit", "Edit", "Form", new { id = view.customer.id })
+                     </td>
+                    
+                 </tr>
+            </table>
+        }
+    }
+</body>
+</html>

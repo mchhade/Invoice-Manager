@@ -1,0 +1,45 @@
+﻿@model InvoiceDetail
+<!Doctype Html>
+<html>
+<head>
+
+</head>
+<body>
+    <h2 style="margin-bottom:10%; margin-top:10%;">Edit Element:</h2>
+    @using (Html.BeginForm("EditElement","Form",FormMethod.Post))
+    {
+        <table>
+            <tr>
+                <td>
+                    <strong>@Html.DisplayNameFor(m => m.description)</strong>
+                </td>
+                <td>
+                    <strong>@Html.DisplayNameFor(m => m.quantity)</strong>
+                </td>
+                <td>
+                    <strong>@Html.DisplayNameFor(m => m.unitPrice)</strong>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.EditorFor(m => m.description)
+                </td>
+                <td>
+                    @Html.EditorFor(m => m.quantity)
+                </td>
+                <td>
+                    @Html.EditorFor(m => m.unitPrice)
+                </td>
+                <td>
+                    @Html.TextBoxFor(m=>m.invoiceId,new  {@type="hidden" })
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button asp-action="EditElement" asp-controller="Form">Save</button>
+                </td>
+            </tr>
+        </table>
+    }
+</body>
+</html>

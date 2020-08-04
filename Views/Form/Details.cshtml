@@ -1,0 +1,48 @@
+﻿@model InvoiceManager.Models.InvoiceDetail
+<!Doctype Html>
+<html>
+<head>
+
+</head>
+<body>
+    <h2 style="margin-bottom:10%;">
+        Invoice Detail:
+    </h2>
+    <table style="width:40%">
+        <tr>
+            <td >
+                <strong>@Html.DisplayNameFor(m => m.description)</strong>
+            </td>
+            <td >
+                <strong>@Html.DisplayNameFor(m => m.quantity)</strong>
+            </td>
+            <td>
+                <strong>@Html.DisplayNameFor(m => m.unitPrice)</strong>
+            </td>
+        </tr>
+    
+    @foreach (InvoiceDetail invoice in ViewBag.details)
+    {
+        
+            <tr>
+                <td>
+                    @invoice.description
+                </td>
+                <td>
+                    @invoice.quantity
+                </td>
+                <td>
+                    @invoice.unitPrice
+                </td>
+                <td>
+                    @Html.ActionLink("Delete", "DeleteElement", "Form", new { id = invoice.id })
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "EditElement", "Form", new { id = invoice.id })
+                </td>
+            </tr>
+       
+    }
+        </table>
+</body>
+</html>

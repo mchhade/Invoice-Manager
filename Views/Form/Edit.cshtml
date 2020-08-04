@@ -1,0 +1,45 @@
+﻿@model Customer
+
+<!DocType Html>
+<html>
+<head>
+
+</head>
+<body>
+    <h2 style="margin-top:10%;margin-bottom:10%;"> Edit Customer</h2>
+    @using (Html.BeginForm("Edit", "Form", FormMethod.Post))
+    {
+    <table>
+        <tr>
+            <td>
+              @Html.DisplayNameFor(m => m.name)
+            </td>
+            <td>
+              @Html.EditorFor(m => m.name)
+            </td>
+        </tr>
+        <tr >
+            <td>
+               @Html.DisplayNameFor(m => m.address)
+            </td>
+            <td>
+               @Html.EditorFor(m => m.address)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(m => m.phoneNumber)
+            </td>
+            <td>
+                @Html.EditorFor(m => m.phoneNumber)
+            </td>
+        </tr>
+         <tr>
+             <td>
+                <button asp-action="Edit" asp-controller="Form">Save</button>
+            </td>
+        </tr>
+    </table>
+    }
+</body>
+</html>
